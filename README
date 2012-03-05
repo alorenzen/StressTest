@@ -1,0 +1,14 @@
+Run a simple stress test on a webserver by sending it a bunch of requests.
+
+Usage:
+1. Start master by using master.rb
+2. Start slaves(slave.rb) and point them to the master.
+3. Start the webserver running
+4. Use runTest.rb to send the desired test to the master. You can configure which file to request, as well as how many times each slave should request it.
+
+The slaves send a heartbeat message to the master every two minutes. The master uses these message to keep a list of alive slaves with whom to schedule tests. Once the master stops responding(by killing the master process), all of the slaves will terminate. 
+The master prunes its list of active slaves every five minutes.
+
+
+
+While this software could be used to perform a DDoS, it was written to test webserver projects for CS339 at Williams College, and should not be used on webservers with out permission.
